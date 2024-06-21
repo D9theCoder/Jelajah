@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Museum Fatahillah{% endblock %}
+
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static 'css/fatahillah.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="text">
+            <h2>Details Museum Fatahillah</h2>
+            <p>Museum Sejarah Jakarta yang terletak di Jalan Taman Fatahillah No.1, Jakarta Barat ini adalah sebuah lembaga museum yang memiliki sejarah yang cukup panjang.
+                Pada tahun 1919, dalam rangka 300 tahun berdirinya kota Batavia, warga kota Batavia khususnya Belanda mulai tertarik dengan sejarah kota Batavia. Pada tahun
+                1930 didirikanlah sebuah yayasan yang bernama Oud Batavia (Batavia Lama) yang bertujuan untuk mengumpulkan segala ihwal tentang sejarah kota Batavia.
+                Tahun 1936, Museum Oud Batavia diresmikan oleh Gubernur Jenderal Tjarda van Starkenborgh Stachouwer (1936-1942), dan dibuka untuk umum pada tahun 1939.</p>
+            <p>Pada masa pemerintahan VOC di Batavia, Museum Sejarah Jakarta mulanya digunakan sebagai gedung Balaikota (Stadhuis). Pada tanggal 27 April 1626, Gubernur 
+                Jenderal Pieter de Carpentier (1623-1627) membangun gedung balaikota baru yang kemudian direnovasi pada tanggal 25 Januari 1707 di masa pemerintahan Gubernur 
+                Jenderal Joan van Hoorn dan baru selesai pada tanggal 10 Juli 1710 di masa pemerintahan Gubernur Jenderal Abraham van Riebeeck.</p>
+            <p>Selain sebagai Balaikota, gedung ini juga berfungsi sebagai Pengadilan, Kantor Catatan Sipil, tempat warga beribadah di hari Minggu, dan Dewan Kotapraja 
+                (College van Scheppen). Pada tahun 1925-1942 gedung ini juga dimanfaatkan sebagai Kantor Pemerintah Provinsi Jawa Barat dan pada tahun 1942-1945 dipakai untuk 
+                kantor pengumpulan logistik Dai Nippon. Tahun 1952 digunakan pula sebagai Markas Komando Militer Kota (KMK) I yang kemudian menjadi Kodim 0503 Jakarta Barat. 
+                Setelah itu pada tahun 1968 gedung ini diserahkan kepada Pemda DKI Jakarta dan kemudian dijadikan sebagai Museum pada tahun 1974.</p>
+            <a href="{% url 'tour:virtual_fatahillah' %}" class="start_btn">Start Virtual Museum Tour</a>
+        </div>
+        <div class="images">
+            <img class="fatahillah1" src="{% static 'images/tour/info1_fatahillah.jpeg' %}">
+            <img class="fatahillah2" src="{% static 'images/tour/info2_fatahillah.jpeg' %}">
+        </div>
+        <div class="slides">
+            <button class="w3-button w3-display-left" onclick="plusDivs(-1)">
+                <a href="{% url 'tour:mandiri' %}">&#10094;</a>
+            </button>
+            <button class="w3-button w3-display-right" onclick="plusDivs(+1)">
+                <a href="{% url 'tour:bankindonesia' %}">&#10095;</a>
+            </button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/Fatahillah.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Profile Page{% endblock %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content" id="content">
+    <div class="profilepic" id="profilepic">
+        <form action="{% url 'users:logout' %}" method="post" class="form" id="form">
+            {% csrf_token %}
+            <h2 class="form_title title">Your Profile</h2>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp0hwo_87x35ulAFBXYV_JAv7VU3OMu9DXQw&s" class="pp">
+            <div class="display" id="display">
+                <h3 class="displays">Username : {{ user.username }}</h3>
+                <h3 class="displays">Email : {{ user.email }}</h3>
+                <h3 class="displays">Full name : {{ user.name }}</h3>
+            </div>
+            <input type="submit" value="SIGN OUT" class="signout">
+        </form>
+    </div>
+    <div class="details" id="details">
+        <form action="{% url 'users:update_profile' %}" method="post" class="form" id="form1">
+            {% csrf_token %}
+            <h2 class="form_title title">Edit Profile</h2>
+            <input type="text" class="form_input" placeholder="Username" id="name" name="name" value="{{ user.username }}">
+            <input type="password" class="form_input" placeholder="Password" id="password" name="password">
+            <input type="text" class="form_input" placeholder="Name" id="phonenumber" name="phonenumber" value="{{ user.name }}">
+            <input type="submit" value="SAVE EDIT" class="edit">
+        </form>
+    </div>
+</div>
+{% endblock %}

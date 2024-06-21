@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Museum Mandiri{% endblock %}
+
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static 'css/mandiri.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="text">
+            <h2>Details Museum Mandiri</h2>
+            <p>Berdiri tanggal 2 Oktober 1998, Museum Mandiri menempati area seluas 10.039 m2, DAN pada awalnya adalah gedung Nederlandsche Handel-Maatschappij 
+                (NHM) atau Factorji Batavia yang merupakan perusahaan dagang milik Belanda yang kemudian berkembang menjadi perusahaan di bidang perbankan.</p>
+            <p>Nederlandsche Handel-Maatschappij (NHM) dinasionalisasi pada tahun 1960 menjadi salah satu gedung kantor Bank Koperasi Tani & Nelayan (BKTN) 
+                Urusan Ekspor Impor. Kemudian bersamaan dengan lahirnya Bank Ekspor Impor Indonesia (Bank Exim) pada 31 Desember 1968, gedung tersebut pun 
+                beralih menjadi kantor pusat Bank Export import (Bank Exim), hingga akhirnya legal merger Bank Exim bersama Bank Dagang Negara (BDN), Bank 
+                Bumi Daya (BBD) dan Bank Pembangunan Indonesia (Bapindo) ke dalam Bank Mandiri (1999), maka gedung tersebut pun menjadi asset Bank Mandiri.</p>
+            <p>Gedung Museum Bank Mandiri (ex-Nederlandsche Handel-Maatschappij (NHM)) dirancang oleh 3 orang arsitek belanda yaitu J.J.J. de Bruyn, A.P. 
+                Smits dan C. van de Linde. Gedung ini mulai dibangun tahun 1929 dan pada tanggal 14 Januari 1933 dibuka secara resmi Oleh C. J Karel Van Aalst, 
+                Presiden NHM ke-10. Gedung ex-NHM ini tampak kokoh dan megah dengan arsitektur Niew Zakelijk atau Art Deco Klasik</p>
+            <p>Koleksi museum terdiri dari berbagai macam koleksi yang terkait dengan aktivitas perbankan "tempo doeloe" dan perkembangannya, koleksi yang 
+                dimiliki mulai dari perlengkapan operasional bank, surat berharga, mata uang kuno (numismatik), brandkast, dan lain-lain.</p>
+            <p>Koleksi perlengkapan operasional bank "tempo doeloe" yang unik, antara lain adalah peti uang, mesin hitung uang mekanik, kalkulator, mesin 
+                pembukuan, mesin cetak, alat pres bendel, seal press, safe deposit box maupun aneka surat berharga seperti bilyet deposito, sertikat deposito, 
+                cek, obligasi, dan saham. Di samping itu, ornamen bangunan, interior dan furniture museum ini masih asli seperti ketika didirikan.</p>
+            <a href="{% url 'tour:virtual_mandiri' %}" class="start_btn">Start Virtual Museum Tour</a>
+        </div>
+        <div class="slides">
+            <button class="w3-button w3-display-left" onclick="plusDivs(-1)">
+                <a href="{% url 'tour:bankindonesia' %}">&#10094;</a>
+            </button>
+            <button class="w3-button w3-display-right" onclick="plusDivs(+1)">
+                <a href="{% url 'tour:fatahillah' %}">&#10095;</a>
+            </button>
+        </div>
+        <div class="images">
+            <img class="mandiri1" src="{% static 'images/tour/info1_fatahillah.jpeg' %}">
+            <img class="mandiri2" src="{% static 'images/tour/info2_fatahillah.jpeg' %}">
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/mandiri.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,225 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', serif;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+}
+
+a:hover {
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+}
+
+.navbar {
+    list-style-type: none;
+    width: 100%;
+    height: 70px;
+    max-width: 4000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    z-index: 99;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    background-color: rgba(255, 255, 255, 0.4);
+    position: absolute;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,.2);
+}
+
+.navbar .logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar .links {
+    display: flex;
+    gap: 4rem;
+}
+
+.navbar .toggle_btn {
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.action_btn {
+    text-decoration: none;
+    background-color: orange;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.action_btn:hover {
+    transform: scale(1.05);
+    color: #fff;
+}
+
+.action_btn:active {
+    transform: scale(0.95);
+}
+
+.dropdown_menu {
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top: 45px;
+    height: 0;
+    width: 150px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown_menu.open {
+    height: 240px;
+}
+
+.dropdown_menu li {
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.dropdown_menu .action_btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* content */
+.profilepic {
+    position: absolute;
+    top: 120px;
+    left: 60px;
+    width: 800px;
+    height: 900px;
+    background-color: rgb(132, 134, 134, 0.5);
+}
+
+.details {
+    position: absolute;
+    top: 120px;
+    right: 60px;
+    width: 800px;
+    height: 900px;
+    background-color: rgb(132, 134, 134, 0.5);
+}
+    
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+  
+.form_input {
+    width: 350px;
+    height: 40px;
+    margin: 4px 0;
+    padding-left: 25px;
+    font-size: 13px;
+    letter-spacing: 0.15px;
+    border: none;
+    outline: none;
+    font-family: "Montserrat", sans-serif;
+    background-color: #ecf0f3;
+    transition: 0.25s ease;
+    border-radius: 8px;
+    box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
+}
+  
+.form_input:focus {
+    box-shadow: inset 4px 4px 4px #d1d9e6, inset -4px -4px 4px #f9f9f9;
+}
+    
+.title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 3;
+    color: #181818;
+}
+    
+.description {
+    font-size: 14px;
+    letter-spacing: 0.25px;
+    text-align: center;
+    line-height: 1.6;
+}
+    
+.button {
+    width: 220px;
+    height: 40px;
+    border-radius: 25px;
+    margin-top: 50px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1.15px;
+    background-image: linear-gradient(to left, black, white);
+    color: #f9f9f9;
+    /* Shadow Box Sign In / Create Account */
+    /* box-shadow: 4px 4px 10px #d1d9e6, -4px -4px 10px #f9f9f9;  */
+    border: none;
+    outline: none;
+}
+  
+.edit, .signout {
+    background-image: linear-gradient(to left, black, white);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 40px;
+    width: 220px;
+    height: 40px;
+    border-radius: 25px;
+    border: none;
+}
+
+.display {
+    margin-top: 40px;
+    font-size: 20px;
+}
+
+.pp {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+}
+
+@media (max-width: 1000px) {
+    .navbar .links,
+    .navbar .action_btn {
+        display: none;
+    }
+
+    .navbar .toggle_btn {
+        display: block;
+    }
+
+    .dropdown_menu {
+        display: block;
+    }
+}

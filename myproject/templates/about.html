@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}About Us{% endblock %}
+
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h1>What is Jelajah?</h1>
+        <p>Selamat datang di Jelajah! Jelajah adalah website yang menyediakan virtual museum tour sambil menghadirkan pengalaman eksplorasi sejarah dan budaya Indonesia secara interaktif. Kami mengajak Anda untuk mengunjungi tiga museum ikonik di Kota Tua, Jakarta Barat: Museum Fatahillah, Museum Mandiri, dan Museum Bank Indonesia. Jelajah bertujuan untuk memperkenalkan kekayaan warisan budaya Indonesia kepada masyarakat luas dengan menyediakan akses mudah dan menyenangkan ke pameran-pameran bersejarah. Melalui teknologi terkini, kami menawarkan tur berkualitas tinggi yang dapat dinikmati kapan saja dan di mana saja. Dengan misi memperkenalkan warisan budaya Indonesia secara luas, kami menyediakan akses mudah, tur edukatif, dan pengalaman imersif dari kenyamanan rumah Anda. Setiap tur didesain secara interaktif dan edukatif, menjadikan pembelajaran sejarah lebih menarik dan menyenangkan. Kami percaya bahwa apresiasi terhadap warisan budaya harus dapat diakses oleh semua orang. Bergabunglah dengan Jelajah untuk menjelajahi, mempelajari, dan menghargai warisan budaya kita bersama-sama!</p>
+        <h2>Meet the Team</h2>
+        <div class="team-container">
+            <img src="{% static 'images/team/teamKevin.png' %}" class="team">
+            <img src="{% static 'images/team/teamLevina.png' %}" class="team">
+            <img src="{% static 'images/team/teamNicholas.png' %}" class="team">
+            <img src="{% static 'images/team/teamRaphaelle.png' %}" class="team">
+            <img src="{% static 'images/team/teamSheraldo.png' %}" class="team">
+        </div>
+        
+    </div>
+    <script src="{% static 'js/about.js' %}"></script>
+{% endblock %}

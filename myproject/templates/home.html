@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="museum">
+        <div class="fatahillah slides">
+            <img class="museumimages" src="{% static 'images/background/Background_Fatahillah1.png' %}" style="width:100%" height="auto">
+            <h1 style="font-size: 12vw;">FATAHILLAH</h1>
+            <a href="{% url 'tour:fatahillah' %}" class="start_btn">Learn More</a>
+            <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+            <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+        </div>
+        <div class="bankindonesia slides">
+            <img class="museumimages" src="{% static 'images/background/mbi.png' %}" style="width:100%" height="auto">
+            <h1 style="font-size: 9vw;">BANKINDONESIA</h1>
+            <a href="{% url 'tour:bankindonesia' %}" class="start_btn">Learn More</a>
+            <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+            <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+        </div>
+        <div class="mandiri slides">
+            <img class="museumimages" src="{% static 'images/background/mm.jpg' %}" style="width:100%" height="auto">
+            <h1 style="font-size: 12vw;">MANDIRI</h1>
+            <a href="{% url 'tour:mandiri' %}" class="start_btn">Learn More</a>
+            <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+            <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+        </div>
+    </div>
+    <script src="{% static 'js/home.js' %}"></script>
+    <script src="{% static 'js/slides.js' %}"></script>
+{% endblock %}

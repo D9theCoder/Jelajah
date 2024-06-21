@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Home Page{% endblock %}</title>
+    {% block custom_css %}{% endblock %}
+    
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo"><a href="{% url 'home' %}">Jelajah</a></div>
+        <ul class="links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="{% url 'support' %}">Support Us</a></li>
+        </ul>
+        {% if user.is_authenticated %}
+        <a href="{% url 'users:profile' %}" class="action_btn">Profile</a>
+        {% else %}
+        <a href="{% url 'users:register' %}" class="action_btn">Register</a>
+        {% endif %}
+        <div class="toggle_btn">
+            <i class="fas fa-bars black-icon"></i>
+            <div class="dropdown_menu">
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'support' %}">Support Us</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'users:profile' %}" class="action_btn2">Profile</a></li>
+                    {% else %}
+                    <li><a href="{% url 'users:register' %}" class="action_btn2">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Support us{% endblock %}
+
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static 'css/support.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h1>Donation Info</h1>
+        <p>Dukung kami dalam menghadirkan tour virtual museum yang mendidik dan menarik! Dengan layanan kami yang dapat anda nikmati secara gratis, Anda dapat menjelajahi sejarah dan budaya Indonesia secara online melalui tur virtual untuk tiga museum terkenal di Kota Tua, Jakarta, seperti Museum Bank Indonesia, Museum Fatahillah, dan Museum Mandiri. Donasi yang anda berikan sangat berarti bagi kami. Donasi akan digunakan untuk:</p>
+        <ul>
+            <li>1. Mengembangkan dan memperbarui konten untuk tour virtual kami.</li>
+            <li>2. Meningkatkan fitur interaktif tur virtual</li>
+            <li>3. Meningkatkan kualitas foto tur virtual.</li>
+        </ul>
+        <button class="donate-button" onclick="window.location.href='https://saweria.co/Jelajah'">Donate via Saweria</button>
+    </div>
+    
+    <script src="{% static 'js/support.js' %}"></script>
+{% endblock %}
