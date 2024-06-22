@@ -23,14 +23,25 @@
         </form>
     </div>
     <div class="details" id="details">
-        <form action="{% url 'users:update_profile' %}" method="post" class="form" id="form1">
+        <form action="{% url 'users:profile' %}" method="post" class="form" id="form1">
             {% csrf_token %}
-            <h2 class="form_title title">Edit Profile</h2>
-            <input type="text" class="form_input" placeholder="Username" id="name" name="name" value="{{ user.username }}">
-            <input type="password" class="form_input" placeholder="Password" id="password" name="password">
-            <input type="text" class="form_input" placeholder="Name" id="phonenumber" name="phonenumber" value="{{ user.name }}">
+            <h2 class="form_title">Edit Profile</h2>
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                </div>
+            {% endfor %}
             <input type="submit" value="SAVE EDIT" class="edit">
         </form>
     </div>
 </div>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
 {% endblock %}

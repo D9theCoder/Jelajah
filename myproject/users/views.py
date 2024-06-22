@@ -48,13 +48,10 @@ def update_profile(request):
             user.save()
             messages.success(request, 'Your profile was successfully updated!')
             return redirect('users:profile')
-        else:
-            for field, error in form.errors.items():
-                messages.error(request, f"{field}: {error}")
     else:
         form = ProfileUpdateForm(instance=request.user)
 
-    return render(request, 'users/profile.html', {'form': form})
+    return render(request, 'users/profile.html', {'form': form, 'user': request.user})
 
 
 # def login_and_register(request):
