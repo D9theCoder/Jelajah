@@ -145,6 +145,7 @@ a:hover {
     color: #333;
     margin-top: 1rem;
     max-width: 900px;
+    padding-right: 10px;
 }
 
 .start_btn {
@@ -189,9 +190,14 @@ a:hover {
     top: 400px;
 }
 
-@media (max-width: 1400px) {
-    .text{
-        padding-right: 400px;
+@media (max-width: 1500px) {
+    .text {
+        padding-right: 500px;
+    }
+
+    .text .images {
+        position: sticky;
+        top: 20px;
     }
 }
 
