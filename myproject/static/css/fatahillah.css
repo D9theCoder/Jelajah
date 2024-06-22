@@ -138,6 +138,7 @@ a:hover {
     color: #333;
     margin-bottom: 1rem;
     max-width: 900px;
+    padding-right: 50px;
 }
 
 .text p {
@@ -237,9 +238,9 @@ a:hover {
 }
 
 
-@media (max-width: 1400px) {
+@media (max-width: 1500px) {
     .text {
-        padding-right: 370px; /* Adjust padding to make space for images */
+        padding-right: 500px;
     }
 
     .text .images {
