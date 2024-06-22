@@ -49,16 +49,58 @@ def update_profile(request):
     if request.method == 'POST':
         form = ProfileUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
-            user = form.save(commit=False)
+            changed = False
+
+            # Check if username has changed
+            if form.cleaned_data['username'] and form.cleaned_data['username'] != request.user.username:
+                request.user.username = form.cleaned_data['username']
+                changed = True
+
+            # Check if name has changed
+            if form.cleaned_data['name'] and form.cleaned_data['name'] != request.user.name:
+                request.user.name = form.cleaned_data['name']
+                changed = True
+
+            # Check if password has changed
             if form.cleaned_data['password']:
-                user.set_password(form.cleaned_data['password'])
-            user.save()
-            messages.success(request, 'Your profile was successfully updated!')
+                request.user.set_password(form.cleaned_data['password'])
+                changed = True
+
+            if changed:
+                request.user.save()
+                messages.success(request, 'Your profile was successfully updated!')
+                
+                # If password was changed, re-authenticate the user
+                if form.cleaned_data['password']:
+                    from django.contrib.auth import update_session_auth_hash
+                    update_session_auth_hash(request, request.user)
+            else:
+                messages.info(request, 'No changes were made to your profile.')
+
             return redirect('users:profile')
+        else:
+            for error in form.non_field_errors():
+                messages.error(request, error)
     else:
         form = ProfileUpdateForm(instance=request.user)
 
     return render(request, 'users/profile.html', {'form': form, 'user': request.user})
+
+# @login_required(login_url='/users/login/')
+# def update_profile(request):
+#     if request.method == 'POST':
+#         form = ProfileUpdateForm(request.POST, instance=request.user)
+#         if form.is_valid():
+#             user = form.save(commit=False)
+#             if form.cleaned_data['password']:
+#                 user.set_password(form.cleaned_data['password'])
+#             user.save()
+#             messages.success(request, 'Your profile was successfully updated!')
+#             return redirect('users:profile')
+#     else:
+#         form = ProfileUpdateForm(instance=request.user)
+
+#     return render(request, 'users/profile.html', {'form': form, 'user': request.user})
 
 def forgot_password(request):
     if request.method == 'POST':

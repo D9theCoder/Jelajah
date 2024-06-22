@@ -16,7 +16,10 @@ class CustomUserCreationForm(UserCreationForm):
         model = CustomUser
         fields = ["username", "email", "name", "password1", "password2"]
         
+
 class ProfileUpdateForm(forms.ModelForm):
+    username = forms.CharField(required=False)
+    name = forms.CharField(required=False)
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form_input'}), required=False)
 
     class Meta:
@@ -27,6 +30,24 @@ class ProfileUpdateForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs.update({'class': 'form_input'})
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if not any(cleaned_data.values()):
+            raise forms.ValidationError("At least one field must be filled to update the profile.")
+        return cleaned_data
+    
+# class ProfileUpdateForm(forms.ModelForm):
+#     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form_input'}), required=False)
+
+#     class Meta:
+#         model = CustomUser
+#         fields = ['username', 'name', 'password']
+
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         for field in self.fields:
+#             self.fields[field].widget.attrs.update({'class': 'form_input'})
 
 # class ProfileUpdateForm(forms.ModelForm):
 #     username = forms.CharField(max_length=100, required=True)
