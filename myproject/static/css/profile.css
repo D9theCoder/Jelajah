@@ -119,12 +119,15 @@ a:hover {
 }
 
 .details {
-    position: absolute;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
     top: 120px;
     right: 60px;
-    width: 800px;
+    width: 680px;
     height: 900px;
-    background-color: rgb(132, 134, 134, 0.5);
+    position: absolute;
 }
     
 .form {
@@ -151,7 +154,7 @@ a:hover {
     border-radius: 8px;
     box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
 }
-  
+
 .form_input:focus {
     box-shadow: inset 4px 4px 4px #d1d9e6, inset -4px -4px 4px #f9f9f9;
 }
@@ -162,7 +165,12 @@ a:hover {
     line-height: 3;
     color: #181818;
 }
-    
+
+.form_title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .description {
     font-size: 14px;
     letter-spacing: 0.25px;
@@ -201,6 +209,7 @@ a:hover {
 .display {
     margin-top: 40px;
     font-size: 20px;
+    text-align: left;
 }
 
 .pp {
@@ -222,4 +231,25 @@ a:hover {
     .dropdown_menu {
         display: block;
     }
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.text-danger {
+    color: red;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+    flex-shrink: 0;
 }

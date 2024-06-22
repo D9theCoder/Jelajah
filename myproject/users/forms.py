@@ -15,15 +15,28 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = CustomUser
         fields = ["username", "email", "name", "password1", "password2"]
-
+        
 class ProfileUpdateForm(forms.ModelForm):
-    username = forms.CharField(max_length=100, required=True)
-    name = forms.CharField(max_length=100, required=True)
-    password = forms.CharField(widget=forms.PasswordInput(), required=False)
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form_input'}), required=False)
 
     class Meta:
         model = CustomUser
         fields = ['username', 'name', 'password']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({'class': 'form_input'})
+
+# class ProfileUpdateForm(forms.ModelForm):
+#     username = forms.CharField(max_length=100, required=True)
+#     name = forms.CharField(max_length=100, required=True)
+#     password = forms.CharField(widget=forms.PasswordInput(), required=False)
+
+#     class Meta:
+#         model = CustomUser
+#         fields = ['username', 'name', 'password']
+
 # class UpdateUserForm(forms.ModelForm):
 #     username = forms.CharField(max_length=100,
 #                                required=True,
