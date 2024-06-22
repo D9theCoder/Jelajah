@@ -40,8 +40,8 @@ a:hover {
 }
 
 .navbar .logo a {
-    font-size: 1.5rem;
-    font-weight: bold;
+    width: 50%;
+    height: 50%;
 }
 
 .navbar .links {
