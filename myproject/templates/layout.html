@@ -7,12 +7,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Home Page{% endblock %}</title>
+    <style>
+        .logo img {
+            width: 100px;
+            height: auto; 
+            margin-top: 10px;
+            margin-left: auto;
+        }
+    </style>
     {% block custom_css %}{% endblock %}
-    
 </head>
 <body>
     <div class="navbar">
-        <div class="logo"><a href="{% url 'home' %}">Jelajah</a></div>
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/Logos.png' %}" alt="Jelajah Logo">
+            </a>
+        </div>
         <ul class="links">
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'about' %}">About Us</a></li>
