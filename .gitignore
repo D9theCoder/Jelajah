@@ -1,3 +1,7 @@
 .venv/
 __pycache__/
 myproject/users/__pycache__/
+myproject/users/__pycache__/forms.cpython-311.pyc
+myproject/users/__pycache__/views.cpython-311.pyc
+myproject/myproject/__pycache__/settings.cpython-311.pyc
+myproject/db.sqlite3
