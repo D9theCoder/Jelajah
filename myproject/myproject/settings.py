@@ -13,11 +13,11 @@ import os
 from pathlib import Path
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # Or your email provider's SMTP server
+EMAIL_HOST = 'smtp.gmail.com' 
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'kevinpurnomo06@gmail.com'  # Your email
-EMAIL_HOST_PASSWORD = 'xpwr hluz tukv bwbj'
+EMAIL_HOST_USER = 'kevinpurnomo06@gmail.com'
+EMAIL_HOST_PASSWORD = 'pets cffq yrnm gymb'
 
 
 DATABASES = {
@@ -163,3 +163,6 @@ AUTH_USER_MODEL = 'users.CustomUser'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+

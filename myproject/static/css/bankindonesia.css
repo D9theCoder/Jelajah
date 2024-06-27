@@ -11,7 +11,7 @@ li {
 
 a {
     text-decoration: none;
-    color: black;
+    color: inherit;
     font-size: 1.5rem;
 }
 
@@ -36,6 +36,7 @@ a:hover {
     backdrop-filter: blur(15px);
     box-shadow: 0 5px 8px 0 rgba(0,0,0,.2);
     position:absolute;
+    color: black;
 }
 
 .navbar .logo a {
@@ -83,22 +84,24 @@ a:hover {
     right: 2rem;
     top: 45px;
     height: 0;
-    width: 150px;
-    background: rgba(255, 255, 255, 0.1);
+    width: 135px;
+    background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(15px);
     border-radius: 10px;
     transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: right;
+    color: white;
 }
 
 .dropdown_menu.open {
-    height: 240px;
+    height: 260px;
 }
 
 .dropdown_menu li {
     padding: 0.8rem;
     display: flex;
-    align-items: center;
-    justify-content: center; 
+    align-items: right;
+    justify-content: right; 
 }
 
 .dropdown_menu .action_btn {

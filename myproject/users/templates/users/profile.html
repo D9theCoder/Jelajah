@@ -1,47 +1,90 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
+{% load custom_filters %}
 {% load static %}
 
-{% block title %}Profile Page{% endblock %}
+{% block title %}Profile{% endblock %}
 
 {% block custom_css %}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="content" id="content">
-    <div class="profilepic" id="profilepic">
-        <form action="{% url 'users:logout' %}" method="post" class="form" id="form">
-            {% csrf_token %}
-            <h2 class="form_title title">Your Profile</h2>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp0hwo_87x35ulAFBXYV_JAv7VU3OMu9DXQw&s" class="pp">
-            <div class="display" id="display">
-                <h3 class="displays">Username : {{ user.username }}</h3>
-                <h3 class="displays">Email : {{ user.email }}</h3>
-                <h3 class="displays">Full name : {{ user.name }}</h3>
+<div class="main-container">
+    <div class="profile-form-container">
+        <h2>Change your profile</h2>
+        <p>Maybe you want to change your credentials</p>
+        
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
             </div>
-            <input type="submit" value="SIGN OUT" class="signout">
+        {% endif %}
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                    {{ message }}
+            {% endfor %}
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">Username</label>
+                {{ form.username|add_class:"form_input" }}
+                {% if form.username.errors %}
+                    <div class="alert alert-danger">
+                        {% for error in form.username.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">Email</label>
+                {{ form.email|add_class:"form_input" }}
+                {% if form.email.errors %}
+                    <div class="alert alert-danger">
+                        {% for error in form.email.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.name.id_for_label }}">Name</label>
+                {{ form.name|add_class:"form_input" }}
+                {% if form.name.errors %}
+                    <div class="alert alert-danger">
+                        {% for error in form.name.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.password.id_for_label }}">Password</label>
+                {{ form.password|add_class:"form_input" }}
+                {% if form.password.errors %}
+                    <div class="alert alert-danger">
+                        {% for error in form.password.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn-update">Update</button>
         </form>
     </div>
-    <div class="details" id="details">
-        <form action="{% url 'users:profile' %}" method="post" class="form" id="form1">
+    <div class="logout-container">
+        <form method="post" action="{% url 'users:logout' %}" class="logout-form">
             {% csrf_token %}
-            <h2 class="form_title">Edit Profile</h2>
-            {% for field in form %}
-                <div class="form-group">
-                    {{ field.label_tag }}
-                    {{ field }}
-                </div>
-            {% endfor %}
-            <input type="submit" value="SAVE EDIT" class="edit">
+            <button type="submit" class="btn-logout">Log Out</button>
         </form>
     </div>
 </div>
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
-
+<script src="{% static 'js/profile.js' %}"></script>
 {% endblock %}
+
+

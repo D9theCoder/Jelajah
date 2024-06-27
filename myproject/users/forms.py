@@ -17,26 +17,69 @@ class CustomUserCreationForm(UserCreationForm):
         fields = ["username", "email", "name", "password1", "password2"]
         
 
-class ProfileUpdateForm(forms.ModelForm):
-    username = forms.CharField(required=False)
-    name = forms.CharField(required=False)
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form_input'}), required=False)
+
+class CustomUserChangeForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput(), required=False)
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'name', 'password']
+        fields = ['username', 'email', 'name', 'password']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields:
-            self.fields[field].widget.attrs.update({'class': 'form_input'})
+            self.fields[field].required = False
+            if field != 'password':
+                self.fields[field].widget.attrs['placeholder'] = getattr(self.instance, field)
 
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        if not password:
+            return self.instance.password
+        return password
+    
     def clean(self):
         cleaned_data = super().clean()
+        
+        username = cleaned_data.get('username')
+        email = cleaned_data.get('email')
+        name = cleaned_data.get('name')
+        
+        if not username:
+            self.add_error('username', "Username cannot be empty.")
+        if not email:
+            self.add_error('email', "Email cannot be empty.")
+        if not name:
+            self.add_error('name', "Name cannot be empty.")
+        
         if not any(cleaned_data.values()):
-            raise forms.ValidationError("At least one field must be filled to update the profile.")
+            raise forms.ValidationError("You must change at least one field.")
+        
         return cleaned_data
     
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        password = self.cleaned_data.get('password')
+        if password and not password.startswith('pbkdf2_'):  # Check if it's a new password (not hashed yet)
+            user.set_password(password)
+        else:
+            password = None
+        if commit:
+            user.save()
+        return user
+
+    
+
+
+    # def save(self, commit=True):
+    #     user = super().save(commit=False)
+    #     password = self.cleaned_data.get('password')
+    #     if password != self.instance.password:
+    #         user.set_password(password)
+    #     if commit:
+    #         user.save()
+    #     return user
+
 # class ProfileUpdateForm(forms.ModelForm):
 #     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form_input'}), required=False)
 
