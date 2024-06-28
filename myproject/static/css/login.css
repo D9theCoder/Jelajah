@@ -54,7 +54,7 @@ body {
 .form_input {
   width: 350px;
   height: 40px;
-  margin: 4px 0;
+  margin: 0;  /* Changed from 4px 0 */
   padding-left: 25px;
   font-size: 13px;
   letter-spacing: 0.15px;
@@ -213,16 +213,21 @@ body {
 
 .error-message {
   color: red;
-  font-size: 12px;
-  margin-top: 5px;
+  font-size: 10px;
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  width: 100%;
   text-align: left;
 }
+
 
 .checkbox-container {
   display: flex;
   align-items: center;
   width: 350px;
-  margin: 10px 0;
+  margin: 20px 0;
+  margin-top: -2px;
 }
 
 .form_checkbox {
@@ -252,4 +257,9 @@ body {
   color: #721c24;
   background-color: #f8d7da;
   border-color: #f5c6cb;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 15px;
 }
