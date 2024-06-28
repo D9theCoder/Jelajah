@@ -87,11 +87,12 @@ a:hover {
     top: 45px;
     height: 0;
     width: 135px;
-    backdrop-filter: blur(100px);
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
     border-radius: 10px;
     transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-align: right;
-
+    color: white;
 }
 
 .dropdown_menu.open {
