@@ -13,8 +13,8 @@ Cara menjalankan appnya:
 5. Make migration -> "py manage.py makemigrations" (hanya dilakukan sekali saja, untuk poin 5 dan 6)
 6. Apply it -> "py manage.py migrate"
 7. Runserver -> "py manage.py runserver"
-8. Buat akun administrator -> "py manage.py createsuperuser"
+8. Buat akun administrator (optional) -> "py manage.py createsuperuser"
 
-Notes tambahan:
+Notes tambahan (Sudah ada akun admin di database):
 - Username administrator: admin
 - Password administrator: admin
